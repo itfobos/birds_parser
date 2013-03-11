@@ -1,4 +1,4 @@
-package com.vektor;
+package com.vector;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

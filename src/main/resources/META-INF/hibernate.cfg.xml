@@ -1,0 +1,27 @@
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="hibernate.connection.useUnicode" value="true"/>
+        <property name="hibernate.connection.charSet" value="UTF-8"/>
+        <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
+        <property name="hibernate.connection.characterSetResults" value="UTF-8"/>
+        <property name="hibernate.connection.clobCharacterEncoding" value="UTF-8"/>
+
+    </session-factory>
+
+</hibernate-configuration>

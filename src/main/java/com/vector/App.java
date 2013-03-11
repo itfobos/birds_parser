@@ -1,4 +1,4 @@
-package com.vektor;
+package com.vector;
 
 /**
  * Hello world!
