@@ -1,4 +1,5 @@
-package com.vector;
+package com.vector.entity;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
