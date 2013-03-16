@@ -7,8 +7,7 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.vector"/>
 
-    <bean
-            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <value>classpath:/config/parser.properties</value>
         </property>
