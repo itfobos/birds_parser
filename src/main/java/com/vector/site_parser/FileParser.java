@@ -3,6 +3,7 @@ package com.vector.site_parser;
 import com.vector.entity.dictionary.Family;
 import com.vector.entity.dictionary.Order;
 import com.vector.entity.dictionary.Species;
+import com.vector.persistence.service.PersistFamilyCachedService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,10 @@ public class FileParser {
 
     private Order currentOrder;
     private Family currentFamily;
+
+    //TODO:
+    private PersistFamilyCachedService familyCachedService;
+
 
     public void parse(final String fileName) {
 

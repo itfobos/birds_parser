@@ -13,7 +13,25 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.springframework-version>3.2.1.RELEASE</org.springframework-version>
+        <javaVersion>1.7</javaVersion>
     </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${javaVersion}</source>
+                        <target>${javaVersion}</target>
+                        <compilerArguments>
+                            <encoding>utf8</encoding>
+                        </compilerArguments>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <dependencies>
         <dependency>
@@ -62,6 +80,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${org.springframework-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib-nodep</artifactId>
+            <version>2.2.2</version>
         </dependency>
 
         <dependency>

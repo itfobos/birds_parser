@@ -1,8 +1,9 @@
 package com.vector.entity.dictionary;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-public class Species {
+public class Species implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "ID")

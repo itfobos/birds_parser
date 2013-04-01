@@ -1,9 +1,10 @@
 package com.vector.entity.dictionary;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "FAMILY")
-public class Family {
+public class Family implements Serializable {
 
     @Id
     @GeneratedValue
