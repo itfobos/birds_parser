@@ -39,4 +39,13 @@ public class Family {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+    @Override
+    public String toString() {
+        return "Family{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", order=" + order +
+                '}';
+    }
 }

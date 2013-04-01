@@ -1,5 +1,6 @@
 package com.vector;
 
+import com.vector.site_parser.FileParser;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,15 +21,15 @@ import java.io.IOException;
 public class App {
     static final Logger logger = LoggerFactory.getLogger(App.class);
 
-    private static AbstractApplicationContext applicationContext;
-
     public static void main(String[] args) throws Exception {
         initLog4j();
-        AbstractApplicationContext app = new ClassPathXmlApplicationContext(
-                "/META-INF/application.xml");
-        App.applicationContext = app;
+//        AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+//                "/META-INF/application.xml");
+//
+//        applicationContext.registerShutdownHook();
 
-        applicationContext.registerShutdownHook();
+        FileParser fileParser = new FileParser();
+        fileParser.parse("D:\\Sources\\birds_parser\\src\\main\\resources\\birds_short.txt");
 
         logger.debug("Finished");
     }
