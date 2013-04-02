@@ -9,19 +9,19 @@ public class Family implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "ID")
-    private long id;
+    private Long id;
 
     @Column(name = "NAME", nullable = false, unique = true)
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Order order;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -23,12 +23,12 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         initLog4j();
-//        AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-//                "/META-INF/application.xml");
-//
-//        applicationContext.registerShutdownHook();
+        AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+                "/META-INF/application.xml");
 
-        FileParser fileParser = new FileParser();
+        applicationContext.registerShutdownHook();
+
+        FileParser fileParser = applicationContext.getBean(FileParser.class);
         fileParser.parse("D:\\Sources\\birds_parser\\src\\main\\resources\\birds_short.txt");
 
         logger.debug("Finished");

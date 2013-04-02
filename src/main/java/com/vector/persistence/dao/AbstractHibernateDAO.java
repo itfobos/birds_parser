@@ -5,19 +5,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Repository
-@Transactional
-public abstract class AbstractHibernateDAO<T extends Serializable> {
+public abstract class AbstractHibernateDAO<T> {
 
     private final Class<T> clazz;
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public AbstractHibernateDAO(final Class<T> clazzToSet) {
         this.clazz = clazzToSet;
@@ -55,10 +53,6 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         final T entity = this.getById(entityId);
         Preconditions.checkState(entity != null);
         this.delete(entity);
-    }
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
     }
 
     protected final Session getCurrentSession() {

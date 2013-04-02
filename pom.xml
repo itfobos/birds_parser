@@ -14,6 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.springframework-version>3.2.1.RELEASE</org.springframework-version>
         <javaVersion>1.7</javaVersion>
+        <aspectjVersion>1.7.2</aspectjVersion>
+
     </properties>
 
     <build>
@@ -81,6 +83,19 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectjVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjVersion}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>cglib</groupId>

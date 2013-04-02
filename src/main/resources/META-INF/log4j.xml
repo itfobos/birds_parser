@@ -24,7 +24,7 @@
     <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
         <param name="Threshold" value="DEBUG"/>
         <param name="File" value="log/parser.log"/>
-        <param name="Append" value="false"/>
+        <param name="Append" value="true"/>
         <param name="MaxFileSize" value="100000KB"/>
         <param name="MaxBackupIndex" value="10"/>
 
@@ -36,7 +36,7 @@
     <appender name="SPRING" class="org.apache.log4j.RollingFileAppender">
         <param name="Threshold" value="DEBUG"/>
         <param name="File" value="log/spring_debug.log"/>
-        <param name="Append" value="false"/>
+        <param name="Append" value="true"/>
         <param name="MaxFileSize" value="100000KB"/>
         <param name="MaxBackupIndex" value="10"/>
 
@@ -55,7 +55,7 @@
     </appender>
 
     <category name="org.springframework">
-        <priority value="DEBUG"/>
+        <priority value="INFO"/>
     </category>
 
     <category name="org.hibernate">

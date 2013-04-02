@@ -3,11 +3,12 @@ package com.vector.entity.dictionary;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity(name = "SPECIES")
 public class Species implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "ID")
-    private long id;
+    private Long id;
 
     @Column(name = "NAME_ENG", nullable = false, unique = true)
     private String nameEng;
@@ -15,7 +16,7 @@ public class Species implements Serializable {
     @Column(name = "NAME_LAT", nullable = false, unique = true)
     private String nameLatin;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Family family;
 
     public Family getFamily() {
@@ -26,11 +27,11 @@ public class Species implements Serializable {
         this.family = family;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
