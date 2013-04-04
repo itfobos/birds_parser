@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Repository
@@ -31,12 +30,6 @@ public abstract class AbstractHibernateDAO<T> {
     public List<T> getAll() {
         return this.getCurrentSession()
                 .createQuery("from " + this.clazz.getName()).list();
-    }
-
-    @SuppressWarnings("unchecked")
-    public T save(final T entity) {
-        Preconditions.checkNotNull(entity);
-        return (T) this.getCurrentSession().save(entity);
     }
 
     public void update(final T entity) {

@@ -29,7 +29,8 @@ public class App {
         applicationContext.registerShutdownHook();
 
         FileParser fileParser = applicationContext.getBean(FileParser.class);
-        fileParser.parse("D:\\Docs\\Sonya_parser\\Sources\\birds_parser\\src\\main\\resources\\data\\birds_short.txt");
+//        fileParser.parse("D:\\Docs\\Sonya_parser\\Sources\\birds_parser\\src\\main\\resources\\data\\birds_short.txt");
+        fileParser.parse("D:\\Docs\\Sonya_parser\\Sources\\birds_parser\\src\\main\\resources\\data\\birds.txt");
 
         logger.debug("Finished");
     }

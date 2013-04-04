@@ -67,7 +67,7 @@ public class FileParser {
 
         Species species = new Species();
         species.setNameLatin(names[SPECIES_LATIN_NAME_INDEX]);
-        species.setNameEng(names[SPECIES_ENG_NAME_INDEX]);
+        species.setName(names[SPECIES_ENG_NAME_INDEX]);
         species.setFamily(currentFamily);
 
         logger.debug(species.toString());

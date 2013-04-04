@@ -4,14 +4,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "SPECIES")
-public class Species implements Serializable {
+public class Species implements Serializable, Dictionary {
     @Id
     @GeneratedValue
     @Column(name = "ID")
     private Long id;
 
     @Column(name = "NAME_ENG", nullable = false, unique = true)
-    private String nameEng;
+    private String name;
 
     @Column(name = "NAME_LAT", nullable = false, unique = true)
     private String nameLatin;
@@ -27,6 +27,7 @@ public class Species implements Serializable {
         this.family = family;
     }
 
+
     public Long getId() {
         return id;
     }
@@ -35,12 +36,13 @@ public class Species implements Serializable {
         this.id = id;
     }
 
-    public String getNameEng() {
-        return nameEng;
+    @Override
+    public String getName() {
+        return name;
     }
 
-    public void setNameEng(String nameEng) {
-        this.nameEng = nameEng;
+    public void setName(String nameEng) {
+        this.name = nameEng;
     }
 
     public String getNameLatin() {
@@ -55,7 +57,7 @@ public class Species implements Serializable {
     public String toString() {
         return "Species{" +
                 "id=" + id +
-                ", nameEng='" + nameEng + '\'' +
+                ", nameEng='" + name + '\'' +
                 ", nameLatin='" + nameLatin + '\'' +
                 ", family=" + family +
                 '}';
