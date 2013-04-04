@@ -17,7 +17,7 @@ public class GenericDAO {
         getCurrentSession().persist(entity);
     }
 
-    public Session getCurrentSession() {
+    private Session getCurrentSession() {
         return this.sessionFactory.getCurrentSession();
     }
 }
