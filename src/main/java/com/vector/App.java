@@ -1,6 +1,6 @@
 package com.vector;
 
-import com.vector.site_parser.FileParser;
+import com.vector.parsers.FileParser;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

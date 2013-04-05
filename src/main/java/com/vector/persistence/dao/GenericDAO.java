@@ -1,28 +1,24 @@
 package com.vector.persistence.dao;
 
 import com.google.common.base.Preconditions;
-import com.vector.entity.dictionary.Dictionary;
 import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
 @Repository
-public class GenericDAO {
-
-    @Autowired
-    private SessionFactory sessionFactory;
+public class GenericDAO extends AbstractHibernateDAO {
 
     public void persist(Object entity) {
         Preconditions.checkNotNull(entity);
         getCurrentSession().persist(entity);
     }
 
-    private Session getCurrentSession() {
-        return this.sessionFactory.getCurrentSession();
+    public <T> Collection<T> getByProperty(Class<T> entityClass, Collection<String> names, final String propertyName) {
+        Criteria criteria = getCurrentSession().createCriteria(entityClass);
+        criteria.add(Restrictions.in(propertyName, names));
+
+        return criteria.list();
     }
 }

@@ -1,4 +1,4 @@
-package com.vector.site_parser;
+package com.vector.parsers;
 
 import com.vector.entity.dictionary.Family;
 import com.vector.entity.dictionary.Order;
@@ -66,8 +66,8 @@ public class FileParser {
         }
 
         Species species = new Species();
-        species.setNameLatin(names[SPECIES_LATIN_NAME_INDEX]);
-        species.setName(names[SPECIES_ENG_NAME_INDEX]);
+        species.setNameLatin(names[SPECIES_LATIN_NAME_INDEX].trim());
+        species.setName(names[SPECIES_ENG_NAME_INDEX].trim());
         species.setFamily(currentFamily);
 
         logger.debug(species.toString());
