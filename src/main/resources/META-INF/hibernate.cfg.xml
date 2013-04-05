@@ -9,7 +9,6 @@
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
 
-        <!--TODO: Checkout the documentation-->
         <!-- Enable Hibernate's automatic session context management -->
         <!--<property name="current_session_context_class">thread</property>-->
 
@@ -23,6 +22,8 @@
         <!-- Update the database schema on startup -->
         <!--TODO: set update-->
         <property name="hbm2ddl.auto">create</property>
+
+        <property name="jdbc.batch_size">20</property>
 
         <property name="connection.useUnicode">true</property>
         <property name="connection.charSet">UTF-8</property>
