@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 //TODO: Dictionaries are need to be cached.
 @Entity(name = "ORDER_BIO")
-public class Order implements Serializable,Dictionary {
+public class Order implements Dictionary, Serializable {
     @Id
     @GeneratedValue
     @Column(name = "ID")

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity(name = "FAMILY")
-public class Family implements Serializable,Dictionary {
+public class Family implements Dictionary, Serializable {
 
     @Id
     @GeneratedValue
