@@ -3,11 +3,12 @@ package com.vector.parsers;
 import com.vector.entity.dictionary.Family;
 import com.vector.entity.dictionary.Order;
 import com.vector.entity.dictionary.Species;
+import com.vector.persistence.service.CachingService;
 import com.vector.persistence.service.GenericService;
-import com.vector.persistence.service.PersistSpeciesCachedService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StopWatch;
 
 import javax.annotation.Resource;
 import java.io.*;
@@ -26,13 +27,15 @@ public class FileParser {
     private Family currentFamily;
 
     @Resource
-    private PersistSpeciesCachedService speciesCachedService;
+    private CachingService speciesCachedService;
 
     @Resource
     private GenericService genericService;
 
 
     public void parse(final String fileName) {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start("parse");
 
         try (BufferedReader fileReader = new BufferedReader(
                 new InputStreamReader(
@@ -55,6 +58,9 @@ public class FileParser {
         } catch (IOException e) {
             logger.error("IO problem.", e);
         }
+
+        stopWatch.stop();
+        logger.debug("Finished. {}" + stopWatch);
     }
 
     private void parseSpecies(final String currentLine) {

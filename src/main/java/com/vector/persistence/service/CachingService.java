@@ -1,7 +1,6 @@
 package com.vector.persistence.service;
 
 
-import com.vector.entity.dictionary.Species;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,8 +14,8 @@ import java.util.Set;
 
 @Component
 @Scope("prototype")
-public class PersistSpeciesCachedService {
-    private static final Logger logger = LoggerFactory.getLogger(PersistSpeciesCachedService.class);
+public class CachingService {
+    private static final Logger logger = LoggerFactory.getLogger(CachingService.class);
 
     @Resource
     private GenericService genericService;
@@ -24,18 +23,18 @@ public class PersistSpeciesCachedService {
     @Value("${persistence.batch_size}")
     private int batchSize;
 
-    private Set<Species> entityCache = new HashSet<>();
+    private Set<Object> entityCache = new HashSet<>();
 
-    public void persist(Species species) {
+    public void persist(Object entity) {
         if (entityCache.size() < batchSize) {
-            entityCache.add(species);
+            entityCache.add(entity);
         } else {
             persistBatch(entityCache);
             entityCache.clear();
         }
     }
 
-    private void persistBatch(Collection<Species> speciesCollection) {
+    private void persistBatch(Collection<Object> speciesCollection) {
         if (speciesCollection.isEmpty()) {
             return;
         }

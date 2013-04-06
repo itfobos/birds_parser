@@ -3,11 +3,13 @@ package com.vector.entity;
 import com.vector.entity.dictionary.Species;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity(name = "SAMPLE")
 public class Sample {
-
     @Id
     @GeneratedValue
     @Column(name = "ID")
@@ -75,6 +77,18 @@ public class Sample {
 
     @Column(name = "NDV")
     private String ndv;
+
+    private static final DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+
+    @Override
+    public String toString() {
+        return "Sample{" +
+                "id=" + id +
+                ", barCode='" + barCode + '\'' +
+                ", dateOfSampling=" + (dateOfSampling != null ? dateFormat.format(dateOfSampling) : null) +
+                ", speciesLatinName='" + speciesLatinName + '\'' +
+                '}';
+    }
 
     public Long getId() {
         return id;

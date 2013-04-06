@@ -2,7 +2,6 @@ package com.vector.persistence.service;
 
 import com.vector.entity.Sample;
 import com.vector.entity.dictionary.Species;
-import com.vector.persistence.dao.SpeciesDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
@@ -12,14 +11,14 @@ import javax.annotation.Resource;
 
 @Component
 @Scope("prototype")
-public class SampleCachedService {
-    private static final Logger logger = LoggerFactory.getLogger(SampleCachedService.class);
+public class SampleCachingService {
+    private static final Logger logger = LoggerFactory.getLogger(SampleCachingService.class);
 
     @Resource
-    private SpeciesDAO speciesDAO;
+    private SpeciesService speciesService;
 
     @Resource
-    private GenericService genericService;
+    private CachingService cachingService;
 
     private Species currentSpecies;
 
@@ -28,14 +27,15 @@ public class SampleCachedService {
      */
     public void persist(Sample sample) {
         sample.setSpecies(getSpecies(sample.getSpeciesLatinName()));
-        //TODO: persist with caching. Maybe make generic cached service.
+
+        cachingService.persist(sample);
     }
 
-    public Species getSpecies(final String speciesLatinName) {
+    private Species getSpecies(final String speciesLatinName) {
         if (currentSpecies != null && currentSpecies.getNameLatin().equals(speciesLatinName)) {
             return currentSpecies;
         } else {
-            currentSpecies = speciesDAO.getByLatinName(speciesLatinName);
+            currentSpecies = speciesService.getByLatinName(speciesLatinName);
             return currentSpecies;
         }
     }

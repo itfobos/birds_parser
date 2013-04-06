@@ -1,12 +1,9 @@
-package com.vector;
+package com.vector.utils;
 
-import com.vector.parsers.FileParser;
+import com.vector.FileParserApp;
 import org.apache.log4j.xml.DOMConfigurator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.util.StopWatch;
 import org.w3c.dom.Document;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
@@ -16,27 +13,20 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.IOException;
 
-/**
- * Hello world!
- */
-public class App {
-    static final Logger logger = LoggerFactory.getLogger(App.class);
+public class AppInitHelper {
+    private static AbstractApplicationContext applicationContext;
 
-    public static void main(String[] args) throws Exception {
-        initLog4j();
-        AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+    public static void initApp() throws Exception {
+        applicationContext = new ClassPathXmlApplicationContext(
                 "/META-INF/application.xml");
 
         applicationContext.registerShutdownHook();
 
-        StopWatch stopWatch = new StopWatch();
-        stopWatch.start("parse");
-        FileParser fileParser = applicationContext.getBean(FileParser.class);
-//        fileParser.parse("D:\\Docs\\Sonya_parser\\Sources\\birds_parser\\src\\main\\resources\\data\\birds_short.txt");
-        fileParser.parse("D:\\Sources\\birds_parser\\src\\main\\resources\\data\\birds.txt");
-        stopWatch.stop();
+        initLog4j();
+    }
 
-        logger.debug("Finished. {}" + stopWatch);
+    public static <T> T getBean(Class<T> clazz) {
+        return applicationContext.getBean(clazz);
     }
 
 
@@ -62,7 +52,7 @@ public class App {
         });
 
         // loading a DOM-tree...
-        Document document = loader.parse(App.class
+        Document document = loader.parse(FileParserApp.class
                 .getResourceAsStream("/META-INF/log4j.xml"));
 
         DOMConfigurator.configure(document.getDocumentElement());

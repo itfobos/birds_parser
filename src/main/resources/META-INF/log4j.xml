@@ -82,6 +82,10 @@
         <priority value="DEBUG"/>
     </category>
 
+    <category name="com.vector.parsers">
+        <priority value="DEBUG"/>
+    </category>
+
     <root>
         <priority value="INFO"/>
         <appender-ref ref="CONSOLE_D"/>

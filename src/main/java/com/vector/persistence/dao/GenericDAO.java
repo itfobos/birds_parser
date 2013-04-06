@@ -15,6 +15,7 @@ public class GenericDAO extends AbstractHibernateDAO {
         getCurrentSession().persist(entity);
     }
 
+    @SuppressWarnings("unchecked")
     public <T> Collection<T> getByProperty(Class<T> entityClass, Collection<String> names, final String propertyName) {
         Criteria criteria = getCurrentSession().createCriteria(entityClass);
         criteria.add(Restrictions.in(propertyName, names));
