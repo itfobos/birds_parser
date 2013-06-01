@@ -1,0 +1,18 @@
+--query to export data from DB.
+
+select sample.number as number,
+	sample.bar_code as bar_code,
+	species.name_lat as species_name_lat,
+	species.name_eng as species_name_eng,
+	order_bio.name as order_name,
+	family.name as family_name,
+	location_of_sampling,
+	date_of_sampling
+from sample
+	join species
+		on(sample.species_id= species.id)
+	join family
+		on(species.family_id = family.id)
+	join order_bio
+		on(family.order_id = order_bio.id)
+order by date_of_sampling, location_of_sampling
