@@ -26,9 +26,14 @@ public class SampleCachingService {
      * Set species and persist
      */
     public void persist(Sample sample) {
-        sample.setSpecies(getSpecies(sample.getSpeciesLatinName()));
+        Species species = getSpecies(sample.getSpeciesLatinName());
+        if (species != null) {
+            sample.setSpecies(species);
 
-        cachingService.persist(sample);
+            cachingService.persist(sample);
+        } else {
+            logger.error("Can't find Species for name '{}'", sample.getSpeciesLatinName());
+        }
     }
 
     private Species getSpecies(final String speciesLatinName) {

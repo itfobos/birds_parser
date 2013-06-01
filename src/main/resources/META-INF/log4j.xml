@@ -67,11 +67,9 @@
     </category>
 
     <category name="org.hibernate" additivity="false">
-        <priority value="DEBUG"/>
-
-        <appender-ref ref="CONSOLE_INFO"/>
-        <appender-ref ref="SPRING"/>
-        <priority value="DEBUG"/>
+        <priority value="INFO"/>
+        <!--<appender-ref ref="CONSOLE_INFO"/>-->
+        <appender-ref ref="FILE"/>
     </category>
 
     <category name="com.vector">
@@ -88,7 +86,8 @@
 
     <root>
         <priority value="INFO"/>
-        <appender-ref ref="CONSOLE_D"/>
+        <!--<appender-ref ref="CONSOLE_D"/>-->
+        <appender-ref ref="CONSOLE_INFO"/>
         <appender-ref ref="FILE"/>
     </root>
 
